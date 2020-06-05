@@ -25,7 +25,8 @@ SECRET_KEY = '9=#vxs1-akh!y7ig!ym9v0f@e(da5_^p^zrp9g&mfj%&sx^s88'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#can be viewed by anyone
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -36,13 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'insta',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -119,3 +123,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+LOGIN_REDIRECT_URL = 'posts'
+
+LOGOUT_REDIRECT_URL = 'posts'
+# use customized model
+AUTH_USER_MODEL = 'insta.InstaUser'
+
+

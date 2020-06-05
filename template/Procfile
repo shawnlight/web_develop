@@ -1,0 +1,1 @@
+web:gunicorn instajz.wsgi --log-file -

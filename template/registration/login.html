@@ -1,0 +1,8 @@
+<h1>Login</h1>
+<form action="" method="post">
+    <!-- prevent attack -->
+{% csrf_token %} 
+<!-- treate element in form as paragraph -->
+{{ form.as_p }}
+<button type="submit">Login</button>
+</form>
